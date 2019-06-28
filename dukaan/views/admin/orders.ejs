@@ -1,0 +1,47 @@
+<% include header.ejs %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>All Orders</h1>
+        </div>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <th>#</th>
+            <th>Status </th>
+            <th>Email </th>
+            <th>Date </th>
+            <th>Items </th>
+            <th> Action</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>delivered</td>
+                <td>me@my.mo</td>
+                <td>2019-05-26T11:19:16.843Z</td>
+                <td>
+                    <table class="table table-bordered">
+                        <thead>
+                            <th>SKU</th>
+                            <th>Quantity </th>
+                            <th>Price </th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Some SKU</td>
+                                <td>2</td>
+                                <td>250</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td><a class="m-1 btn btn-danger" href="/admin/orders/setshipped/1" role="button">Set Shipped</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<% include footer.ejs %>
+</body>
+</html>

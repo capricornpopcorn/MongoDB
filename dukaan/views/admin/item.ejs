@@ -1,0 +1,109 @@
+<% include header.ejs %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Manage Items</h1>
+            <% if(typeof items!=="undefined" && items.length>0){ %>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <th>SKU</th>
+                    <th>Name </th>
+                    <th>Price </th>
+                    <th> Action</th>
+                </thead>
+                <tbody>
+                    <% for(const item of items) {%>
+                    <tr>
+                        <td class="item-sku"><%= item.sku %></td>
+                        <td class="item-name"><%= item.name %></td>
+                        <td class="item-price"><%= item.price %></td>
+                        <!-- <td>Some SKU</td>
+                        <td></td>
+                        <td>250</td> -->
+                        <td><a class="m-1 btn btn-primary edit" href="#" role="button">Edit
+                                item</a><a class="m-1 btn btn-danger delete" href="#"
+                                role="button">Delete item
+                            </a></td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <% }
+    else{ %>
+    <p class="lead">No item to display here yet.</p>
+    <% } %>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">Create item</div>
+                <div class="card-block">
+                    <form method="POST" action="/admin/item" autocomplete="off"><input type="hidden" name="itemId"
+                            value="">
+                        <div class="form-group"><label class="form-control-label" for="sku">SKU:</label><input
+                                class="form-control" id="sku" type="number" name="sku" autocomplete="off" value="">
+                        </div>
+                        <div class="form-group"><label class="form-control-label" for="name">Name:</label><input
+                                class="form-control" id="name" type="text" name="name" autocomplete="off" value="">
+                        </div>
+                        <div class="form-group"><label class="form-control-label" for="price">Price:</label><input
+                                class="form-control" id="price" type="text" name="price" autocomplete="off" value="">
+                        </div><button class="m-1 btn btn-primary " type="submit" id="submitButton"
+                            method="POST">Submit</button><a class="m-1 btn btn-secondary " id="resetButton" href="/admin/item"
+                            role="button">Reset</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include footer.ejs %>
+
+<script>
+
+    $(document).ready(function () {
+        $('form').submit(function (e) {
+            e.preventDefault();
+            $.post('/admin/item', {
+                id: $('#itemId').val(), name: $('#name').val(),
+                sku: $('#sku').val(), qty: '1',
+                price: $('#price').val(), status: 'Pending'
+            })
+            });
+            this.reset();
+        });
+        
+  $('.delete').click(function(e) {
+    e.preventDefault();
+    $.ajax({
+      url: '/admin/item/delete/' + $(this).closest('tr').find('.item-sku').text(),
+      type: 'delete',
+      success: window.location.reload(),
+    });
+  });
+
+  $('.edit').click(function(e) {
+            e.preventDefault();
+            let itemSku = $(this).closest('tr').find('.item-sku').text().trim();
+            let itemName = $(this).closest('tr').find('.item-name').text().trim();
+            let itemPrice = $(this).closest('tr').find('.item-price').text().trim();
+            // function editItem() {
+                document.getElementById('sku').value = itemSku;
+                document.getElementById('name').value = itemName;
+                document.getElementById('price').value = itemPrice;
+                // document.getElementById('sku').setAttribute('disabled', true);
+                document.getElementById('submitButton').innerHTML = 'Edit';
+                document.getElementById('resetButton').innerHTML = 'Cancel';
+            // }
+            // window.location.reload()
+            // editItem();
+            
+        });
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<% include header.ejs %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Manage Users</h1>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <th>Email</th>
+                    <th> Action</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="/admin/user/impersonate/1">me@moveBy.co</a></td>
+                        <td><a class="m-1 btn btn-primary" href="/admin/user/1" role="button">Edit User</a><a
+                                class="m-1 btn btn-danger" href="/admin/user/delete/1" role="button">Delete User </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">Create User</div>
+                <div class="card-block">
+                    <form method="POST" action="/admin/user" autocomplete="off"><input type="hidden" name="userId"
+                            value="">
+                        <div class="form-group"><label class="form-control-label" for="email">Email
+                                Address:</label><input class="form-control" id="email" type="email" name="email"
+                                autocomplete="off" value=""></div>
+                        <div class="form-group"><label class="form-control-label" for="password">Password:</label><input
+                                class="form-control" id="password" type="password" name="password" autocomplete="off">
+                        </div><button class="m-1 btn btn-primary" type="submit">Submit</button><a
+                            class="m-1 btn btn-secondary" href="/admin/user" role="button">Reset</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% include footer.ejs %>
+</body>
+</html>
