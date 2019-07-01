@@ -1,0 +1,27 @@
+body {
+  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  line-height: 1.5;
+  color: #292b2c;
+  padding-top: 5rem;
+}
+
+a {
+  color: #00B7FF;
+}
+h1{
+    margin-bottom: .5rem;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+    font-size: 2.5rem;
+}
+p{
+  font-size: 1.25rem;
+  font-weight: 300;   
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+nav{
+  background-color: black;
+}

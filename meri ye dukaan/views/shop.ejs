@@ -1,0 +1,38 @@
+<% include header.ejs %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>A very basic Shop !</h1></div>
+    </div>
+    <% if(typeof items!=="undefined" && items.length>0 ){ %>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <th>SKU</th>
+            <th>Name </th>
+            <th>Price </th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            <% for(const item of items) {%>
+            <tr>
+            <!-- <%=JSON.stringify(item)%> -->
+                <td><%= item.sku %></td>
+                <td><%= item.name %></td>
+                <td><%= item.price %></td>
+                <td><a class="m-1 btn btn-primary" href="/shop/tobasket/21" role="button">Add to Basket</a></td>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
+    <% }
+ else{ %>  
+    <p class="lead">Nothing to display here yet.</p>
+ <% } %>
+</div>
+
+
+<% include footer.ejs %>
+</body>
+</html>
+

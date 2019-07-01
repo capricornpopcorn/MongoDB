@@ -1,0 +1,5 @@
+[
+    {"id":21,"name":"Laptop","sku":1,"qty":2,"price":250000,"status":"Shipped"},
+    {"id":22,"name":"Phone","sku":123456,"qty":2,"price":15000,"status":"Shipped"},
+    {"id":23,"name":"Computer","sku":785342,"qty":2,"price":25000,"status":"Shipped"}
+]
