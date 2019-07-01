@@ -90,12 +90,21 @@
             let itemSku = $(this).closest('tr').find('.item-sku').text().trim();
             let itemName = $(this).closest('tr').find('.item-name').text().trim();
             let itemPrice = $(this).closest('tr').find('.item-price').text().trim();
+
+        // var $tr = $button.closest('tr');
+        // var id = $tr.data('id');
+        // var $td = $tr.find('td:first');
+
             // function editItem() {
                 document.getElementById('sku').value = itemSku;
                 document.getElementById('name').value = itemName;
                 document.getElementById('price').value = itemPrice;
                 // document.getElementById('sku').setAttribute('disabled', true);
                 document.getElementById('submitButton').innerHTML = 'Edit';
+
+                document.getElementById("submitButton").onclick = function() { 
+                document.form.action = "/admin/item/id"};
+
                 document.getElementById('resetButton').innerHTML = 'Cancel';
             // }
             // window.location.reload()

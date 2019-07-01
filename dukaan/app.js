@@ -4,6 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
+const mongoose = require('mongoose');
 const app = express();
 
 // parse requests of content-type - application/x-www-form-urlencoded
@@ -13,13 +14,12 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 // Configuring the database
-const dbConfig = require('./config/database.config.js');
-const mongoose = require('mongoose');
+const dbConfig = 'mongodb+srv://capricornpopcorn:admin@cluster0-3cukf.mongodb.net/dukaan?retryWrites=true&w=majority';
 
-mongoose.Promise = global.Promise;
+console.log("Server is listening on port 3000");
 
 // Connecting to the database
-mongoose.connect(dbConfig.url, {
+mongoose.connect(dbConfig, {
     useNewUrlParser: true
 }).then(() => {
     console.log("Successfully connected to the database");    
@@ -68,12 +68,9 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-// Require Notes routes
-require('./app/routes/note.routes.js')(app);
 
-// // listen for requests
-// app.listen(3000, () => {
-//   console.log("Server is listening on port 3000");
-// });
+// Require Notes routes
+// require('./app/routes/note.routes.js')(app);
+
  
 module.exports = app;
